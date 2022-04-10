@@ -22,5 +22,23 @@ class Sparepart_model{
         $this->db->bind('id', $id);
         return $this->db->single();
     }
+
+    public function tambahDataSparepart($data)
+
+    {
+        $query = "INSERT INTO sparepart
+                        VALUES
+                    ('', :kode, :deskrip, :detail, :qty, :mrp)";
+
+        $this->db->query($query);
+        $this->db->bind('kode', $data['kode']);
+        $this->db->bind('deskrip', $data['deskrip']);
+        $this->db->bind('detail', $data['detail']);
+        $this->db->bind('qty', $data['qty']);
+        $this->db->bind('mrp', $data['mrp']);
+
+        $this->db->execute();
+        return $this->db->hitungBaris();
+    }
     
 }

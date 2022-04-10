@@ -19,4 +19,12 @@ class Sparepart extends Controller {
         $this->view('templates/footer');
         
     }
+
+    public function tambah()
+    {
+        if($this->model('Sparepart_model')->tambahDataSparepart($_POST) > 0) {
+            header('Location: ' . BASEURL . '/sparepart');
+            exit;
+        }
+    }
 }
