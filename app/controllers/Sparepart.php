@@ -23,6 +23,11 @@ class Sparepart extends Controller {
     public function tambah()
     {
         if($this->model('Sparepart_model')->tambahDataSparepart($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'ditambahkan', 'success');
+            header('Location: ' . BASEURL . '/sparepart');
+            exit;
+        } else {
+            Flasher::setFlash('gagal', 'ditambahkan', 'danger');
             header('Location: ' . BASEURL . '/sparepart');
             exit;
         }

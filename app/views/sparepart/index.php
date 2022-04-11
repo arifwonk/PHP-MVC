@@ -1,7 +1,13 @@
 <div class="container mt-3">
 
     <div class="row">
-        <div class="col-6">
+        <div class="col-lg-6">
+            <?php Flasher::flash(); ?>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">
                 Insert data sparepart
@@ -49,7 +55,7 @@
                         <label for="qty" class="form-label">Qty</label>
                         <input type="number" class="form-control" id="qty" name="qty">
                     </div>
-                    <label for="mrp" class="form-label">Datalist</label>
+                    <label for="mrp" class="form-label">Data list</label>
                     <input class="form-control" list="datalistOptions" id="mrp" name= "mrp" placeholder="Type to search..." autocomplete="off">
                     <datalist id="datalistOptions">
                         <option value="VB">
