@@ -32,4 +32,17 @@ class Sparepart extends Controller {
             exit;
         }
     }
+
+    public function hapus($id)
+    {
+        if($this->model('Sparepart_model')->hapusDataSparepart($id) > 0) {
+            Flasher::setFlash('berhasil', 'dihapus', 'success');
+            header('Location: ' . BASEURL . '/sparepart');
+            exit;
+        } else {
+            Flasher::setFlash('gagal', 'dihapus', 'danger');
+            header('Location: ' . BASEURL . '/sparepart');
+            exit;
+        }
+    }
 }

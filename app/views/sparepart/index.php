@@ -16,9 +16,10 @@
             <h3>List Sparepart</h3>
             <ul class="list-group">
                 <?php foreach ($data['brg'] as $brg) : ?>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <li class="list-group-item">
                         <?= $brg['kode']; ?>
-                        <a href="<?= BASEURL; ?>/sparepart/detail/<?= $brg['id'] ?>" class="badge bg-primary">detail</a>
+                        <a href="<?= BASEURL; ?>/sparepart/hapus/<?= $brg['id'] ?>" class="badge bg-danger rounded-pill float-end ms-1" onclick="return confirm('Are you sure...!')">delete</a>
+                        <a href="<?= BASEURL; ?>/sparepart/detail/<?= $brg['id'] ?>" class="badge bg-primary rounded-pill float-end ms-1">detail</a>
                     </li>
                 <?php endforeach; ?>
             </ul>
