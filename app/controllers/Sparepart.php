@@ -45,4 +45,22 @@ class Sparepart extends Controller {
             exit;
         }
     }
+
+    public function getubah()
+    {
+        echo json_encode($this->model('Sparepart_model')->getSparepartByID($_POST['id']));
+    }
+
+    public function ubah()
+    {
+        if($this->model('Sparepart_model')->ubahDataSparepart($_POST) > 0) {
+            Flasher::setFlash('berhasil', 'diubah', 'success');
+            header('Location: ' . BASEURL . '/sparepart');
+            exit;
+        } else {
+            Flasher::setFlash('gagal', 'diubah', 'danger');
+            header('Location: ' . BASEURL . '/sparepart');
+            exit;
+        }
+    }
 }

@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-lg-6">
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">
+            <button type="button" class="btn btn-primary tombolTambahData" data-bs-toggle="modal" data-bs-target="#formModal">
                 Insert data sparepart
             </button>
             <br><br>
@@ -19,7 +19,8 @@
                     <li class="list-group-item">
                         <?= $brg['kode']; ?>
                         <a href="<?= BASEURL; ?>/sparepart/hapus/<?= $brg['id'] ?>" class="badge bg-danger rounded-pill float-end ms-1" onclick="return confirm('Are you sure...!')">delete</a>
-                        <a href="<?= BASEURL; ?>/sparepart/detail/<?= $brg['id'] ?>" class="badge bg-primary rounded-pill float-end ms-1">detail</a>
+                        <a href="<?= BASEURL; ?>/sparepart/ubah/<?= $brg['id'] ?>" class="badge bg-warning rounded-pill float-end ms-1 tampilModalUbah" data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?= $brg['id']; ?>">edit</a>
+                        <a href="<?= BASEURL; ?>/sparepart/detail/<?= $brg['id'] ?>" class="badge bg-success rounded-pill float-end ms-1">detail</a>
                     </li>
                 <?php endforeach; ?>
             </ul>
@@ -34,12 +35,12 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="judulModal">Insert data sparepart</h5>
+                <h5 class="modal-title" id="formModalLabel">Insert data sparepart</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <form action="<?= BASEURL ?>/sparepart/tambah" method="post">
-
+                <input type="hidden" name="id" id="id">
                     <div class="form-group">
                         <label for="kode" class="form-label">Item Kode</label>
                         <input type="number" class="form-control" id="kode" name="kode">
@@ -56,14 +57,16 @@
                         <label for="qty" class="form-label">Qty</label>
                         <input type="number" class="form-control" id="qty" name="qty">
                     </div>
-                    <label for="mrp" class="form-label">Data list</label>
-                    <input class="form-control" list="datalistOptions" id="mrp" name= "mrp" placeholder="Type to search..." autocomplete="off">
-                    <datalist id="datalistOptions">
-                        <option value="VB">
-                        <option value="ND">
-                    </datalist>
-
-
+                    <div>
+                    <div class="form-group">
+                            <label for="mrp">MRP</label>
+                            <select class="form-control" id="mrp" name="mrp">
+                                <option placeholder="" ></option>
+                                <option value="VB">VB</option>
+                                <option value="ND">ND</option>
+                            </select>
+                        </div>
+                    </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

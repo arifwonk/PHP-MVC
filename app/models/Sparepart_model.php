@@ -51,4 +51,27 @@ class Sparepart_model{
 
         return $this->db->hitungBaris();
     }
+
+    public function ubahDataSparepart($data)
+
+    {
+        $query = "UPDATE sparepart SET
+                    kode = :kode,
+                    deskrip = :deskrip,
+                    detail = :detail,
+                    qty = :qty,
+                    mrp = :mrp
+                 WHERE id = :id";
+
+        $this->db->query($query);
+        $this->db->bind('kode', $data['kode']);
+        $this->db->bind('deskrip', $data['deskrip']);
+        $this->db->bind('detail', $data['detail']);
+        $this->db->bind('qty', $data['qty']);
+        $this->db->bind('mrp', $data['mrp']);
+        $this->db->bind('id', $data['id']);
+
+        $this->db->execute();
+        return $this->db->hitungBaris();
+    }
 }
