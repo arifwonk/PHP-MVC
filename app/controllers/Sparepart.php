@@ -63,4 +63,13 @@ class Sparepart extends Controller {
             exit;
         }
     }
+
+    public function cari()
+    {
+        $data['judul'] = 'List Spare Part';
+        $data['brg'] = $this->model('Sparepart_model')->cariDataSparepart();
+        $this->view('templates/header', $data);
+        $this->view('sparepart/index', $data);
+        $this->view('templates/footer');
+    }
 }

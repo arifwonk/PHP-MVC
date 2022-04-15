@@ -1,6 +1,7 @@
 <?php
 
-class Sparepart_model{
+class Sparepart_model
+{
     private $table = 'sparepart';
     private $db;
 
@@ -8,8 +9,8 @@ class Sparepart_model{
     {
         $this->db = new Database;
     }
-   
-    
+
+
     public function getAllSparepart()
     {
         $this->db->query('SELECT * FROM ' . $this->table);
@@ -40,7 +41,7 @@ class Sparepart_model{
         $this->db->execute();
         return $this->db->hitungBaris();
     }
-    
+
     public function hapusDataSparepart($id)
     {
         $query = "DELETE FROM sparepart WHERE id = :id";
@@ -73,5 +74,19 @@ class Sparepart_model{
 
         $this->db->execute();
         return $this->db->hitungBaris();
+    }
+
+    public function cariDataSparepart()
+    {
+        $keyword = $_POST['keyword'];
+        $query = "SELECT * FROM sparepart WHERE 
+        kode LIKE :keyword OR
+        deskrip LIKE :keyword OR
+        detail LIKE :keyword OR
+        mrp LIKE :keyword";
+
+        $this->db->query($query);
+        $this->db->bind('keyword', "%$keyword%");
+        return $this->db->resultSet();
     }
 }
