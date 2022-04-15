@@ -31,7 +31,7 @@
             <ul class="list-group">
                 <?php foreach ($data['brg'] as $brg) : ?>
                     <li class="list-group-item">
-                        <?= $brg['mrp']; ?>
+                        <?= $brg['kode']; ?>
                         <a href="<?= BASEURL; ?>/sparepart/hapus/<?= $brg['id'] ?>" class="badge bg-danger rounded-pill float-end ms-1" onclick="return confirm('Are you sure...!')">delete</a>
                         <a href="<?= BASEURL; ?>/sparepart/ubah/<?= $brg['id'] ?>" class="badge bg-warning rounded-pill float-end ms-1 tampilModalUbah" data-bs-toggle="modal" data-bs-target="#formModal" data-id="<?= $brg['id']; ?>">edit</a>
                         <a href="<?= BASEURL; ?>/sparepart/detail/<?= $brg['id'] ?>" class="badge bg-success rounded-pill float-end ms-1">detail</a>
